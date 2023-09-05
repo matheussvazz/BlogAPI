@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\matheus.s.vaz\\OneDrive - Corporativo\\Área de Trabalho\\Estudos\\CURSO BALTA.IO\\API\\Blog\\Blog.csproj": {}
+    "C:\\Users\\matheus.s.vaz\\OneDrive - Corporativo\\Área de Trabalho\\Estudos\\CURSO BALTA.IO\\API\\Blog\\Blog.csproj": {}
   },
   "projects": {
-    "c:\\Users\\matheus.s.vaz\\OneDrive - Corporativo\\Área de Trabalho\\Estudos\\CURSO BALTA.IO\\API\\Blog\\Blog.csproj": {
+    "C:\\Users\\matheus.s.vaz\\OneDrive - Corporativo\\Área de Trabalho\\Estudos\\CURSO BALTA.IO\\API\\Blog\\Blog.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\matheus.s.vaz\\OneDrive - Corporativo\\Área de Trabalho\\Estudos\\CURSO BALTA.IO\\API\\Blog\\Blog.csproj",
+        "projectUniqueName": "C:\\Users\\matheus.s.vaz\\OneDrive - Corporativo\\Área de Trabalho\\Estudos\\CURSO BALTA.IO\\API\\Blog\\Blog.csproj",
         "projectName": "Blog",
-        "projectPath": "c:\\Users\\matheus.s.vaz\\OneDrive - Corporativo\\Área de Trabalho\\Estudos\\CURSO BALTA.IO\\API\\Blog\\Blog.csproj",
+        "projectPath": "C:\\Users\\matheus.s.vaz\\OneDrive - Corporativo\\Área de Trabalho\\Estudos\\CURSO BALTA.IO\\API\\Blog\\Blog.csproj",
         "packagesPath": "C:\\Users\\matheus.s.vaz\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\matheus.s.vaz\\OneDrive - Corporativo\\Área de Trabalho\\Estudos\\CURSO BALTA.IO\\API\\Blog\\obj\\",
+        "outputPath": "C:\\Users\\matheus.s.vaz\\OneDrive - Corporativo\\Área de Trabalho\\Estudos\\CURSO BALTA.IO\\API\\Blog\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
