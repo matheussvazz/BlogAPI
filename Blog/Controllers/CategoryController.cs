@@ -13,8 +13,16 @@ namespace Blog.Controllers
         public async Task<IActionResult> GetAsync(
         [FromServices] BlogDataContext context)
         {
-            var categories = await context.Categories.ToListAsync();
-            return Ok(categories);
+            try
+            {
+                var categories = await context.Categories.ToListAsync();
+                return Ok(categories);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "05X04 - Falha interna no servidor");
+            }
+
         }
 
 
@@ -24,14 +32,22 @@ namespace Blog.Controllers
         [FromRoute] int id,
         [FromServices] BlogDataContext context)
         {
-            var category = await context
+            try
+            {
+                var category = await context
                 .Categories
                 .FirstOrDefaultAsync(x => x.Id == id);
 
-            if (category == null)
-                return NotFound();
+                if (category == null)
+                    return NotFound();
 
-            return Ok(category);
+                return Ok(category);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "05X05 - Falha interna no servidor");
+            }
+
         }
 
 
@@ -62,46 +78,74 @@ namespace Blog.Controllers
         //Atualiza uma categoria
         [HttpPut("v1/categories")]
         public async Task<IActionResult> PutAsync(
-        [FromRoute] Category model,
+        [FromRoute] int id,
+        [FromBody] Category model,
         [FromServices] BlogDataContext context)
         {
-            var category = await context
+            try
+            {
+                var category = await context
                 .Categories
                 .FirstOrDefaultAsync(x => x.Id == id);
 
-            if (category == null)
-                return NotFound();
+                if (category == null)
+                    return NotFound();
 
-            category.Name = model.Name;
-            category.Slug = model.Slug;
+                category.Name = model.Name;
+                category.Slug = model.Slug;
 
-            context.Categories.Update(category);
-            await context.SaveChangesAsync(category);
+                context.Categories.Update(category);
+                await context.SaveChangesAsync();
 
-            return Created($"v1/categories/{model.Id}", model);
+                return Created($"v1/categories/{model.Id}", model);
+            }
+            catch (DbUpdateException ex)
+            {
+                return BadRequest("05XE8 - Não foi possível atualizar a categoria");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "05X11 - Falha interna no servidor");
+            }
+
+
         }
 
 
         //Deleta uma categoria
         [HttpDelete("v1/categories/{id:int}")]
         public async Task<IActionResult> DeleteAsync(
-        [FromRoute] Category model,
+        [FromRoute] int id,
+        [FromBody] Category model,
         [FromServices] BlogDataContext context)
         {
-            var category = await context
-                .Categories
-                .FirstOrDefaultAsync(x => x.Id == id);
+            try
+            {
+                var category = await context
+                  .Categories
+                  .FirstOrDefaultAsync(x => x.Id == id);
 
-            if (category == null)
-                return NotFound();
+                if (category == null)
+                    return NotFound();
 
-            category.Name = model.Name;
-            category.Slug = model.Slug;
+                category.Name = model.Name;
+                category.Slug = model.Slug;
 
-            context.Categories.Remove(category);
-            await context.SaveChangesAsync(category);
+                context.Categories.Remove(category);
+                await context.SaveChangesAsync();
 
-            return Ok(category);
+                return Ok(category);
+            }
+            catch (DbUpdateException ex)
+            {
+                return BadRequest("05XE7 - Não foi possível excluir a categoria");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "05X12 - Falha interna no servidor");
+            }
+
         }
+
     }
 }
