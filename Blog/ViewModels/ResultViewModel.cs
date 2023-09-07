@@ -2,6 +2,11 @@ namespace Blog.ViewModels
 {
     public class ResultViewModel<T>         //Toda requisição da nossa API vai retornar o ResultViewModel
     {
+
+        public class EditorCategoryViewModel
+        {
+
+        }
         public ResultViewModel(T data, List<string> errors)
         {
             Data = data;

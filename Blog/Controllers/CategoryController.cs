@@ -40,9 +40,9 @@ namespace Blog.Controllers
                 .FirstOrDefaultAsync(x => x.Id == id);
 
                 if (category == null)
-                    return NotFound();
+                    return NotFound(new ResultViewModel<Category>("Conteúdo não encontrado"));
 
-                return Ok(category);
+                return Ok(new ResultViewModel<Category>(category));
             }
             catch (Exception e)
             {
@@ -160,9 +160,7 @@ namespace Blog.Controllers
 
         }
 
+
     }
 
-    public class EditorCategoryViewModel
-    {
-    }
 }
