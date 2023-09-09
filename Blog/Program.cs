@@ -1,4 +1,5 @@
 using Blog.Data;
+using Blog.Services;
 using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,9 @@ builder   // Configura o comportamento da API
 
 builder.Services.AddControllers();
 builder.Services.AddDbContext<BlogDataContext>();
+builder.Services.AddTransient<TokenService>();
+
+
 
 var app = builder.Build();
 
